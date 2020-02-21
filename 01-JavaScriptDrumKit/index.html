@@ -1,11 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>JS Drum Kit</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 
@@ -58,41 +59,41 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
-<script>
-    
-    function playSound(e){
-        
-        //select an audio selector where it has a data-key
-       const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-       const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-       console.log(audio);
-       console.log(key);
-       key.classList.add('playing'); 
+  <script>
+
+    function playSound(e) {
+
+      //select an audio selector where it has a data-key
+      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+      const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+      console.log(audio);
+      console.log(key);
+      key.classList.add('playing');
       //jQuery form // key.addClass('playing'); 
-    //   key.classList.remove('');
-    //   key.classList.toggle('');
-       
-       if(!audio) return; //stop the function from running 
-       audio.currentTime = 0;
-       audio.play();
+      //   key.classList.remove('');
+      //   key.classList.toggle('');
+
+      if (!audio) return; //stop the function from running 
+      audio.currentTime = 0;
+      audio.play();
     }
-    
-    const removeTransition = function(e){
-        console.log(e);
-        if(e.propertyName !== 'transform') return;
-        this.classList.remove('playing');
-        
+
+    const removeTransition = function (e) {
+      console.log(e);
+      if (e.propertyName !== 'transform') return;
+      this.classList.remove('playing');
+
     }
     const keys = document.querySelectorAll('.key');
-   // keys.addEventListener('transparentend');  When you have a list you can't listen to all of them
-   // you have to do a loop
-   // each key gets a event listiner add to it which is transitionend and when transition endig will gett 
-   // remove by removeTransition
-   keys.forEach(key => key.addEventListener('transitionend', removeTransition))
-   window.addEventListener('keydown', playSound);
-</script>
+    // keys.addEventListener('transparentend');  When you have a list you can't listen to all of them
+    // you have to do a loop
+    // each key gets a event listiner add to it which is transitionend and when transition endig will gett 
+    // remove by removeTransition
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition))
+    window.addEventListener('keydown', playSound);
+  </script>
 
 
 </body>
-</html>
 
+</html>
